@@ -602,7 +602,7 @@ STAT_FUNCS_PCT = [
 
 def show_perf_stats(returns, factor_returns, positions=None,
                     transactions=None, live_start_date=None,
-                    bootstrap=False):
+                    bootstrap=False, backtest_label_replacement='Backtest'):
     """
     Prints some performance metrics of the strategy.
 
@@ -685,9 +685,10 @@ def show_perf_stats(returns, factor_returns, positions=None,
             ('All', perf_stats_all),
         ]), axis=1)
     else:
+        # TODO: add suppress_print option
         print('Backtest months: ' +
               str(int(len(returns) / APPROX_BDAYS_PER_MONTH)))
-        perf_stats = pd.DataFrame(perf_stats_all, columns=['Backtest'])
+        perf_stats = pd.DataFrame(perf_stats_all, columns=[backtest_label_replacement])
 
     for column in perf_stats.columns:
         for stat, value in perf_stats[column].iteritems():
@@ -753,7 +754,9 @@ def plot_rolling_returns(returns,
                          legend_loc='best',
                          volatility_match=False,
                          cone_function=timeseries.forecast_cone_bootstrap,
-                         ax=None, **kwargs):
+                         ax=None,
+                         backtest_label_replacement='Backtest',
+                         **kwargs):
     """
     Plots cumulative rolling returns versus some benchmarks'.
 
@@ -840,7 +843,7 @@ def plot_rolling_returns(returns,
         oos_cum_returns = pd.Series([])
 
     is_cum_returns.plot(lw=3, color='forestgreen', alpha=0.6,
-                        label='Backtest', ax=ax, **kwargs)
+                        label=backtest_label_replacement, ax=ax, **kwargs)
 
     if len(oos_cum_returns) > 0:
         oos_cum_returns.plot(lw=4, color='red', alpha=0.6,
