@@ -602,7 +602,8 @@ STAT_FUNCS_PCT = [
 
 def show_perf_stats(returns, factor_returns, positions=None,
                     transactions=None, live_start_date=None,
-                    bootstrap=False, backtest_label_replacement='Backtest'):
+                    bootstrap=False, backtest_label_replacement='Backtest',
+                    suppress_print=False):
     """
     Prints some performance metrics of the strategy.
 
@@ -674,10 +675,11 @@ def show_perf_stats(returns, factor_returns, positions=None,
             positions=positions_oos,
             transactions=transactions_oos)
 
-        print('In-sample months: ' +
-              str(int(len(returns_is) / APPROX_BDAYS_PER_MONTH)))
-        print('Out-of-sample months: ' +
-              str(int(len(returns_oos) / APPROX_BDAYS_PER_MONTH)))
+        if not suppress_print:
+            print('In-sample months: ' +
+                  str(int(len(returns_is) / APPROX_BDAYS_PER_MONTH)))
+            print('Out-of-sample months: ' +
+                  str(int(len(returns_oos) / APPROX_BDAYS_PER_MONTH)))
 
         perf_stats = pd.concat(OrderedDict([
             ('In-sample', perf_stats_is),
@@ -686,8 +688,9 @@ def show_perf_stats(returns, factor_returns, positions=None,
         ]), axis=1)
     else:
         # TODO: add suppress_print option
-        print('Backtest months: ' +
-              str(int(len(returns) / APPROX_BDAYS_PER_MONTH)))
+        if not suppress_print:
+            print('Backtest months: ' +
+                  str(int(len(returns) / APPROX_BDAYS_PER_MONTH)))
         perf_stats = pd.DataFrame(perf_stats_all, columns=[backtest_label_replacement])
 
     for column in perf_stats.columns:
