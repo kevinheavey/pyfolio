@@ -603,7 +603,7 @@ STAT_FUNCS_PCT = [
 def show_perf_stats(returns, factor_returns, positions=None,
                     transactions=None, live_start_date=None,
                     bootstrap=False, backtest_label_replacement='Backtest',
-                    suppress_print=False):
+                    suppress_print=False, return_df=False):
     """
     Prints some performance metrics of the strategy.
 
@@ -700,6 +700,9 @@ def show_perf_stats(returns, factor_returns, positions=None,
                                                             1)) + '%'
 
     utils.print_table(perf_stats, fmt='{0:.2f}')
+
+    if return_df:
+        return perf_stats
 
 
 def plot_returns(returns,
