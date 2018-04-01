@@ -19,8 +19,8 @@ import pandas as pd
 
 from itertools import chain
 import matplotlib.pyplot as plt
-from pyfolio.pos import get_percent_alloc
-from pyfolio.utils import print_table
+from pyfolio_fork_aprm.pos import get_percent_alloc
+from pyfolio_fork_aprm.utils import print_table
 
 
 def perf_attrib(returns, positions, factor_returns, factor_loadings):
