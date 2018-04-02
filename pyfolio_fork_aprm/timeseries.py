@@ -645,6 +645,12 @@ def value_at_risk(returns, period=None, sigma=2.0):
     value_at_risk = returns_agg.mean() - sigma * returns_agg.std()
     return value_at_risk
 
+def skew(a):
+    return stats.skew(a, bias=False)
+
+def kurtosis(a):
+    return stats.kurtosis(a, bias=False)
+
 
 SIMPLE_STAT_FUNCS = [
     ep.annual_return,
@@ -656,8 +662,8 @@ SIMPLE_STAT_FUNCS = [
     ep.max_drawdown,
     ep.omega_ratio,
     ep.sortino_ratio,
-    stats.skew,
-    stats.kurtosis,
+    skew,
+    kurtosis,
     ep.tail_ratio,
     value_at_risk
 ]
