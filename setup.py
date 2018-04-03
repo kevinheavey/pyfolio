@@ -3,23 +3,16 @@ import sys
 
 from setuptools import setup
 
-import versioneer
-
-DISTNAME = 'pyfolio'
-DESCRIPTION = "pyfolio is a Python library for performance and risk analysis of financial portfolios"
-LONG_DESCRIPTION = """pyfolio is a Python library for performance and risk analysis of
-financial portfolios developed by `Quantopian Inc`_. It works well with the
-`Zipline`_ open source backtesting library.
-
-At the core of pyfolio is a so-called tear sheet that consists of
-various individual plots that provide a comprehensive performance
-overview of a portfolio.
+DISTNAME = 'pyfolio_fork_aprm'
+DESCRIPTION = "If you're looking for pyfolio you've come to the wrong place."
+LONG_DESCRIPTION = """WARNING: This fork of pyfolio consists of a few hacks that were convenient for a group assignment.
+You probably don't want to use this.
 
 .. _Quantopian Inc: https://www.quantopian.com
 .. _Zipline: http://zipline.io
 """
-MAINTAINER = 'Quantopian Inc'
-MAINTAINER_EMAIL = 'opensource@quantopian.com'
+MAINTAINER = 'Kevin Heavey'
+MAINTAINER_EMAIL = 'kevinheavey123@gmail.com'
 AUTHOR = 'Quantopian Inc'
 AUTHOR_EMAIL = 'opensource@quantopian.com'
 URL = "https://github.com/quantopian/pyfolio"
@@ -69,19 +62,16 @@ extras_reqs = {
 if __name__ == "__main__":
     setup(
         name=DISTNAME,
-        cmdclass=versioneer.get_cmdclass(),
-        version=versioneer.get_version(),
+        version='0.8',
         maintainer=MAINTAINER,
         maintainer_email=MAINTAINER_EMAIL,
         description=DESCRIPTION,
         license=LICENSE,
         url=URL,
         long_description=LONG_DESCRIPTION,
-        packages=['pyfolio', 'pyfolio.tests'],
-        package_data={'pyfolio': ['data/*.*']},
+        packages=['pyfolio_fork_aprm'],
+        package_data={'pyfolio_fork_aprm': ['data/*.*']},
         classifiers=classifiers,
         install_requires=install_reqs,
         extras_require=extras_reqs,
-        tests_require=test_reqs,
-        test_suite='nose.collector',
     )
