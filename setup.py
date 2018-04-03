@@ -62,7 +62,7 @@ extras_reqs = {
 if __name__ == "__main__":
     setup(
         name=DISTNAME,
-        version='0.8',
+        version='0.8.1',
         maintainer=MAINTAINER,
         maintainer_email=MAINTAINER_EMAIL,
         description=DESCRIPTION,
