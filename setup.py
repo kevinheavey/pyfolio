@@ -17,7 +17,7 @@ AUTHOR = 'Quantopian Inc'
 AUTHOR_EMAIL = 'opensource@quantopian.com'
 URL = "https://github.com/quantopian/pyfolio"
 LICENSE = "Apache License, Version 2.0"
-VERSION = "0.8.1"
+VERSION = "0.8.2"
 
 classifiers = ['Development Status :: 4 - Beta',
                'Programming Language :: Python',
@@ -62,7 +62,7 @@ extras_reqs = {
 if __name__ == "__main__":
     setup(
         name=DISTNAME,
-        version='0.8.1',
+        version='0.8.2',
         maintainer=MAINTAINER,
         maintainer_email=MAINTAINER_EMAIL,
         description=DESCRIPTION,
