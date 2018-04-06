@@ -646,10 +646,14 @@ def value_at_risk(returns, period=None, sigma=2.0):
     return value_at_risk
 
 def skew(a):
-    return stats.skew(a, bias=False)
+    """Computes skew for a series of simple returns. 
+    Converts to log returns under the hood."""
+    return stats.skew(np.log1p(a), bias=False)
 
 def kurtosis(a):
-    return stats.kurtosis(a, bias=False)
+    """Computes kurtosis for a series of simple returns. 
+    Converts to log returns under the hood."""
+    return stats.kurtosis(np.log1p(a), bias=False)
 
 
 SIMPLE_STAT_FUNCS = [
